@@ -36,6 +36,8 @@ public class Client {
          System.out.println("Server response: " + response);
 
          displayResponseOnUI(response);
+         
+         System.out.println("a");
 
      } catch (IOException e) {
          e.printStackTrace();
@@ -59,4 +61,7 @@ public class Client {
      });
  }
 }
+
+
+
 
