@@ -54,9 +54,8 @@ public class ThongTinTaiKhoanDAO {
                 String username = resultSet.getString("USERNAME");
                 String gmail = resultSet.getString("GMAIL");
                 String password = resultSet.getString("PASSWORD");
-                String confirmPassword = resultSet.getString("CONFIRM");
 
-                DangKi account = new DangKi(username, gmail, password, confirmPassword);
+                DangKi account = new DangKi(username, gmail, password);
                 accountList.add(account);
             }
         } catch (SQLException e) {
@@ -66,5 +65,21 @@ public class ThongTinTaiKhoanDAO {
         closeConnection();
 
         return accountList;
+    }
+    
+	public static void deleteDangKi(String user) {
+        openConnection();
+
+        String sql = "DELETE FROM TaiKhoanDangKi WHERE HoVaTen = ?";
+
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, user);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
     }
 }

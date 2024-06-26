@@ -16,26 +16,8 @@ public class ThemSanPham extends JFrame {
 	private JTextField tFMaSP;
 	private JTextField tFTenSP;
 	private JTextField tFGiaCa;
+	private JButton btnThem, btnThoat;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ThemSanPham frame = new ThemSanPham();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public ThemSanPham() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -72,14 +54,33 @@ public class ThemSanPham extends JFrame {
 		tFGiaCa.setBounds(197, 127, 160, 26);
 		contentPane.add(tFGiaCa);
 		
-		JButton btnThem = new JButton("Thêm");
+		btnThem = new JButton("Thêm");
 		btnThem.setBounds(76, 178, 117, 42);
 		contentPane.add(btnThem);
 		
-		JButton btnThoat = new JButton("Thoát");
+		btnThoat = new JButton("Thoát");
 		btnThoat.setBounds(240, 178, 117, 42);
 		contentPane.add(btnThoat);
 	}
 
+	public JTextField gettFMaSP() {
+		return tFMaSP;
+	}
+
+	public JTextField gettFTenSP() {
+		return tFTenSP;
+	}
+
+	public JTextField gettFGiaCa() {
+		return tFGiaCa;
+	}
+
+	public JButton getBtnThem() {
+		return btnThem;
+	}
+
+	public JButton getBtnThoat() {
+		return btnThoat;
+	}
 }
 

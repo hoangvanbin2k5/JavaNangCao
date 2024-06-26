@@ -1,7 +1,5 @@
 package View;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,27 +14,8 @@ public class ThemThongTinTK extends JFrame {
 	private JTextField tFUsername;
 	private JTextField tFGmail;
 	private JTextField tFPassword;
-	private JButton btnThoat;
+	private JButton btnThoat, btnThem;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ThemThongTinTK frame = new ThemThongTinTK();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public ThemThongTinTK() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -73,7 +52,7 @@ public class ThemThongTinTK extends JFrame {
 		tFPassword.setBounds(181, 126, 170, 26);
 		contentPane.add(tFPassword);
 		
-		JButton btnThem = new JButton("Thêm");
+		btnThem = new JButton("Thêm");
 		btnThem.setBounds(76, 187, 117, 39);
 		contentPane.add(btnThem);
 		
@@ -82,5 +61,25 @@ public class ThemThongTinTK extends JFrame {
 		contentPane.add(btnThoat);
 	}
 
+	public JTextField gettFUsername() {
+		return tFUsername;
+	}
+
+	public JTextField gettFGmail() {
+		return tFGmail;
+	}
+
+	public JTextField gettFPassword() {
+		return tFPassword;
+	}
+
+	public JButton getBtnThoat() {
+		return btnThoat;
+	}
+
+	public JButton getBtnThem() {
+		return btnThem;
+	}
+	
 }
 

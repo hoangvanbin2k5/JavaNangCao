@@ -6,6 +6,13 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
+import DAO.ThongTinTaiKhoanDAO;
+import Models.DangKi;
+
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JTable;
 
@@ -80,5 +87,24 @@ public class XemThongTinTaiKhoan extends JFrame {
 
     public JTable getTableThongTin() {
         return tableThongTin;
+    }
+    
+    public void loadDataToTable() {
+        List<DangKi> accountList = ThongTinTaiKhoanDAO.getAllAccounts();
+        DefaultTableModel model = new DefaultTableModel();
+
+        model.addColumn("Username");
+        model.addColumn("Gmail");
+        model.addColumn("Password");
+
+        for (DangKi account : accountList) {
+            Object[] row = new Object[3];
+            row[0] = account.getUserName();
+            row[1] = account.getEmail();
+            row[2] = account.getPassWord();
+            model.addRow(row);
+        }
+
+        tableThongTin.setModel(model);
     }
 }

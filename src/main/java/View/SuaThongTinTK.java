@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Models.DangKi;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -16,27 +19,8 @@ public class SuaThongTinTK extends JFrame {
 	private JTextField tFUsername;
 	private JTextField tFGmail;
 	private JTextField tFPassword;
-	private JButton btnThoat;
+	private JButton btnThoat,btnSua;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SuaThongTinTK frame = new SuaThongTinTK();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public SuaThongTinTK() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -73,7 +57,7 @@ public class SuaThongTinTK extends JFrame {
 		tFPassword.setBounds(181, 126, 170, 26);
 		contentPane.add(tFPassword);
 		
-		JButton btnSua = new JButton("Sửa");
+		btnSua = new JButton("Sửa");
 		btnSua.setBounds(76, 187, 117, 39);
 		contentPane.add(btnSua);
 		
@@ -82,5 +66,31 @@ public class SuaThongTinTK extends JFrame {
 		contentPane.add(btnThoat);
 	}
 
+	public JTextField gettFUsername() {
+		return tFUsername;
+	}
+
+	public JTextField gettFGmail() {
+		return tFGmail;
+	}
+
+	public JTextField gettFPassword() {
+		return tFPassword;
+	}
+
+	public JButton getBtnThoat() {
+		return btnThoat;
+	}
+
+	public JButton getBtnSua() {
+		return btnSua;
+	}
+	
+	public SuaThongTinTK(DangKi dangKi) {
+		this();
+		tFUsername.setText(dangKi.getUserName());
+		tFGmail.setText(dangKi.getEmail());
+		tFPassword.setText(dangKi.getPassWord());
+	}
 }
 

@@ -6,6 +6,13 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
+import DAO.GiaCaDAO;
+import Models.GiaCa;
+
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JTable;
 
@@ -80,5 +87,24 @@ public class GiaCaSanPhamAdmin extends JFrame {
 
     public JTable getTableSanPham() {
         return tableSanPham;
+    }
+    
+    public void loadDataToTable() {
+        List<GiaCa> giaCaList = GiaCaDAO.getAllGiaCa();
+        DefaultTableModel model = new DefaultTableModel();
+
+        model.addColumn("Mã sản phẩm");
+        model.addColumn("Tên sản phẩm");
+        model.addColumn("Giá tiền");
+
+        for (GiaCa giaCa : giaCaList) {
+            Object[] row = new Object[3];
+            row[0] = giaCa.getMaSP();
+            row[1] = giaCa.getTenSP();
+            row[2] = giaCa.getGiaTien();
+            model.addRow(row);
+        }
+
+        tableSanPham.setModel(model);
     }
 }

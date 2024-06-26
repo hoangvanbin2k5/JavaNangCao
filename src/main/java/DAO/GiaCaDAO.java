@@ -82,4 +82,40 @@ public class GiaCaDAO {
     	
     	closeConnection();
     }
+    
+    public static void insertGiaCa(GiaCa giaCa) {
+    	openConnection();
+    	
+    	String sql = "INSERT INTO GiaCaDichVu (MaSp, TenSP, GiaTien) VALUES (?, ?, ?)";
+    	
+    	try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, giaCa.getMaSP());
+            statement.setString(2, giaCa.getTenSP());
+            statement.setFloat(3, giaCa.getGiaTien());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
+    
+    public static void updateGiaCa(GiaCa giaCa) {
+    	openConnection();
+    	
+    	String sql = "UPDATE GiaCaDichVu SET TenSP = ?, GiaTien = ? WHERE MaSP = ?";
+    	
+    	try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, giaCa.getTenSP());
+            statement.setFloat(2, giaCa.getGiaTien());
+            statement.setString(3, giaCa.getMaSP());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
 }

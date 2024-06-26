@@ -20,25 +20,6 @@ public class SuaSan extends JFrame {
     private JButton btnSua;
     private JButton btnThoat;
 
-    /**
-     * Khởi chạy ứng dụng.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    SuaSan frame = new SuaSan();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    /**
-     * Tạo khung.
-     */
     public SuaSan() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);

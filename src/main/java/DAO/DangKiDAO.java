@@ -57,4 +57,23 @@ public class DangKiDAO {
 		
 		closeConnection();
 	}
+	
+	public static void updateDangKi(DangKi dangKi) {
+		openConnection();
+		
+		String sql = "UPDATE TaiKhoanDangKi SET GMAIL = ?, PASSWORD = ?, CONFIRM = ? WHERE USERNAME = ?";
+		
+		try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, dangKi.getEmail());
+            statement.setString(2, dangKi.getPassWord());
+            statement.setString(3, dangKi.getConfirmPW());
+            statement.setString(4, dangKi.getUserName());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+	}
 }

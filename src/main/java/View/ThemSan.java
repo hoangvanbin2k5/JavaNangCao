@@ -19,25 +19,6 @@ public class ThemSan extends JFrame {
 	private JTextField tFThoiGianKetThuc;
 	private JButton btnThem, btnThoat;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ThemSan frame = new ThemSan();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public ThemSan() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -90,8 +71,6 @@ public class ThemSan extends JFrame {
 		btnThoat = new JButton("Thoát");
 		btnThoat.setBounds(255, 207, 117, 40);
 		contentPane.add(btnThoat);
-		
-		
 	}
 
 	public JButton getBtnThem() {

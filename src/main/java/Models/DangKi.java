@@ -13,6 +13,14 @@ public class DangKi {
 		this.passWord = passWord;
 		this.confirmPW = confirmPW;
 	}
+	
+	
+
+	public DangKi(String userName, String email, String passWord) {
+		this.userName = userName;
+		this.email = email;
+		this.passWord = passWord;
+	}
 
 	public String getUserName() {
 		return userName;

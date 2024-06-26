@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Models.GiaCa;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -17,26 +20,8 @@ public class SuaSanPham extends JFrame {
 	private JTextField tFMaSP;
 	private JTextField tFTenSP;
 	private JTextField tFGiaCa;
+	private JButton btnSua, btnThoat;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SuaSanPham frame = new SuaSanPham();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public SuaSanPham() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -73,14 +58,40 @@ public class SuaSanPham extends JFrame {
 		tFGiaCa.setBounds(197, 127, 160, 26);
 		contentPane.add(tFGiaCa);
 		
-		JButton btnSua = new JButton("Sửa");
+		btnSua = new JButton("Sửa");
 		btnSua.setBounds(76, 178, 117, 42);
 		contentPane.add(btnSua);
 		
-		JButton btnThoat = new JButton("Thoát");
+		btnThoat = new JButton("Thoát");
 		btnThoat.setBounds(240, 178, 117, 42);
 		contentPane.add(btnThoat);
 	}
 
+	public SuaSanPham(GiaCa giaCa) {
+		this();
+		tFMaSP.setText(giaCa.getMaSP());
+		tFTenSP.setText(giaCa.getTenSP());
+		tFGiaCa.setText(String.valueOf(giaCa.getGiaTien()));
+	}
+
+	public JTextField gettFMaSP() {
+		return tFMaSP;
+	}
+
+	public JTextField gettFTenSP() {
+		return tFTenSP;
+	}
+
+	public JTextField gettFGiaCa() {
+		return tFGiaCa;
+	}
+
+	public JButton getBtnSua() {
+		return btnSua;
+	}
+
+	public JButton getBtnThoat() {
+		return btnThoat;
+	}
 }
 
