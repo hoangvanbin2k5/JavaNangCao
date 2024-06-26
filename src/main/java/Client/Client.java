@@ -37,8 +37,6 @@ public class Client {
 
          displayResponseOnUI(response);
          
-         System.out.println("a");
-
      } catch (IOException e) {
          e.printStackTrace();
      }

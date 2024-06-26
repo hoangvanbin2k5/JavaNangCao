@@ -5,8 +5,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
+import DAO.LichSanDAO;
+import Models.LichSan;
 
 import javax.swing.JLabel;
+
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JTable;
 
@@ -81,5 +88,26 @@ public class XemLichSanChuSan extends JFrame {
 
     public JTable getTableLichSan() {
         return tableLichSan;
+    }
+
+    public void loadDataToTable() {
+        List<LichSan> lichSanList = LichSanDAO.getAllLichSan();
+        DefaultTableModel model = new DefaultTableModel();
+
+        model.addColumn("Họ Và Tên");
+        model.addColumn("Ngày");
+        model.addColumn("Thời gian bắt đầu");
+        model.addColumn("Thời gian kết thúc");
+
+        for (LichSan i : lichSanList) {
+            Object[] row = new Object[4];
+            row[0] = i.getHoVaTen();
+            row[1] = i.getNgay();
+            row[2] = i.getThoiGianDa();
+            row[3] = i.getThoiGianKetThuc();
+            model.addRow(row);
+        }
+        
+        tableLichSan.setModel(model);
     }
 }

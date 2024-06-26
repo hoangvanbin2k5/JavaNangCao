@@ -52,9 +52,9 @@ public class GiaCaDAO {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                String maSP = resultSet.getString("Mã sản phẩm");
-                String tenSP = resultSet.getString("Tên sản phẩm");
-                float giaSP = resultSet.getFloat("Giá tiền");
+                String maSP = resultSet.getString("MaSP");
+                String tenSP = resultSet.getString("TenSP");
+                float giaSP = resultSet.getFloat("GiaTien");
 
                 GiaCa giaCa = new GiaCa(maSP, tenSP, giaSP);
                 giaCaList.add(giaCa);
@@ -66,5 +66,20 @@ public class GiaCaDAO {
         closeConnection();
 
         return giaCaList;
+    }
+    
+    public static void deleteGiaCa(String MaSp) {
+    	openConnection();
+    	
+    	String sql = "DELETE FROM GiaCaDichVu WHERE MaSP = ?";
+    	try {
+    		statement = conn.prepareStatement(sql);
+    		statement.setString(1, MaSp);
+    		statement.executeUpdate();
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    	}
+    	
+    	closeConnection();
     }
 }

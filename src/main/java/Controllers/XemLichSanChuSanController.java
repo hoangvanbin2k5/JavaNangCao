@@ -2,6 +2,8 @@ package Controllers;
 
 import DAO.LichSanDAO;
 import Models.LichSan;
+import View.SuaSan;
+import View.ThemSan;
 import View.TrangChuSanBongChuSan;
 import View.XemLichSanChuSan;
 import javax.swing.JOptionPane;
@@ -19,29 +21,57 @@ public class XemLichSanChuSanController {
         loadDataToTable();
 
         view.getBtnXoaSan().addActionListener(e -> {
-                int selectedRow = view.getTableLichSan().getSelectedRow();
-                if (selectedRow == -1) {
-                    JOptionPane.showMessageDialog(view, "Vui lòng chọn một hàng để xoá.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
+            int selectedRow = view.getTableLichSan().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(view, "Vui lòng chọn một hàng để xoá.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-                DefaultTableModel model = (DefaultTableModel) view.getTableLichSan().getModel();
-                String hoVaTen = (String) model.getValueAt(selectedRow, 0); 
+            DefaultTableModel model = (DefaultTableModel) view.getTableLichSan().getModel();
+            String hoVaTen = (String) model.getValueAt(selectedRow, 0); 
 
-                LichSanDAO.deleteLichSan(hoVaTen);
+            LichSanDAO.deleteLichSan(hoVaTen);
 
-                model.removeRow(selectedRow);
+            model.removeRow(selectedRow);
+        });
+        
+        view.getBtnThem().addActionListener(e -> {
+            ThemSan themSan = new ThemSan();
+            ThemSanController controller = new ThemSanController(themSan, view);
+            themSan.setVisible(true);
+            loadDataToTable();
+        });
+        
+        view.getBtnChinhSua().addActionListener(e -> {
+            int selectedRow = view.getTableLichSan().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(view, "Vui lòng chọn một hàng để chỉnh sửa.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) view.getTableLichSan().getModel();
+            String hoVaTen = (String) model.getValueAt(selectedRow, 0); 
+            String ngay = (String) model.getValueAt(selectedRow, 1);
+            String tgBatDau = (String) model.getValueAt(selectedRow, 2);
+            String tgKetThuc = (String) model.getValueAt(selectedRow, 3);
+
+            LichSan lichSan = new LichSan(hoVaTen, ngay, tgBatDau, tgKetThuc);
+            SuaSan suaSanView = new SuaSan(lichSan);
+            SuaSanController suaSanController = new SuaSanController(suaSanView, view);
+            suaSanView.setVisible(true);
         });
 
         view.getBtnThoat().addActionListener(e -> {
-                TrangChuSanBongChuSan trangChu = new TrangChuSanBongChuSan();
-                TrangChuSanBongChuSanController controller = new TrangChuSanBongChuSanController(trangChu);
-                trangChu.setVisible(true);
-                view.dispose();
+            TrangChuSanBongChuSan trangChu = new TrangChuSanBongChuSan();
+            TrangChuSanBongChuSanController controller = new TrangChuSanBongChuSanController(trangChu);
+            trangChu.setVisible(true);
+            view.dispose();
         });
+        
+        loadDataToTable();
     }
     
-    private void loadDataToTable() {
+    public void loadDataToTable() {
         List<LichSan> lichSanList = LichSanDAO.getAllLichSan();
         DefaultTableModel model = new DefaultTableModel();
 

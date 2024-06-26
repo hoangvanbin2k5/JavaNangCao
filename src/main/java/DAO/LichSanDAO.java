@@ -102,4 +102,23 @@ public class LichSanDAO {
 
         closeConnection();
     }
+    
+    public static void updateLichSan(LichSan lichSan) {
+        openConnection();
+
+        String sql = "UPDATE LichSan SET Ngay = ?, ThoiGianDa = ?, ThoiGianKetThuc = ? WHERE HoVaTen = ?";
+
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, lichSan.getNgay());
+            statement.setString(2, lichSan.getThoiGianDa());
+            statement.setString(3, lichSan.getThoiGianKetThuc());
+            statement.setString(4, lichSan.getHoVaTen());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
 }

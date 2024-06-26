@@ -64,21 +64,20 @@ public class GiaCaSanPhamAdminController {
 //            }
 //        });
 
-//        view.getBtnXoaSanPham().addActionListener(e -> {
-//            int selectedRow = view.getTableSanPham().getSelectedRow();
-//            if (selectedRow == -1) {
-//                JOptionPane.showMessageDialog(view, "Vui lòng chọn một sản phẩm để xoá.", "Thông báo", JOptionPane.WARNING_MESSAGE);
-//                return;
-//            }
-//
-//            String maSP = (String) view.getTableSanPham().getValueAt(selectedRow, 0);
-//            int confirm = JOptionPane.showConfirmDialog(view, "Bạn có chắc chắn muốn xoá sản phẩm này?", "Xác nhận", JOptionPane.YES_NO_OPTION);
-//            if (confirm == JOptionPane.YES_OPTION) {
-//                GiaCaDAO.deleteGiaCa(maSP);
-//                loadDataToTable();
-//                JOptionPane.showMessageDialog(view, "Xoá sản phẩm thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        });
+        view.getBtnXoaSanPham().addActionListener(e -> {
+            int selectedRow = view.getTableSanPham().getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(view, "Vui lòng chọn một sản phẩm để xoá.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) view.getTableSanPham().getModel();
+            String maSp = (String) model.getValueAt(selectedRow, 0);
+            
+            GiaCaDAO.deleteGiaCa(maSp);
+            
+            model.removeRow(selectedRow);
+        });
 
         view.getBtnThoat().addActionListener(e -> {
             TrangChuSanBongChuSan trangChu = new TrangChuSanBongChuSan();
