@@ -54,8 +54,9 @@ public class ThongTinTaiKhoanDAO {
                 String username = resultSet.getString("USERNAME");
                 String gmail = resultSet.getString("GMAIL");
                 String password = resultSet.getString("PASSWORD");
+                String salt = resultSet.getString("Salt");
 
-                DangKi account = new DangKi(username, gmail, password);
+                DangKi account = new DangKi(username, gmail, password, salt);
                 accountList.add(account);
             }
         } catch (SQLException e) {
@@ -70,7 +71,7 @@ public class ThongTinTaiKhoanDAO {
 	public static void deleteDangKi(String user) {
         openConnection();
 
-        String sql = "DELETE FROM TaiKhoanDangKi WHERE HoVaTen = ?";
+        String sql = "DELETE FROM TaiKhoanDangKi WHERE USERNAME = ?";
 
         try {
             statement = conn.prepareStatement(sql);

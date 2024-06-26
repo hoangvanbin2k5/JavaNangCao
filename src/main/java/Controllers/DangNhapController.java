@@ -26,7 +26,7 @@ public class DangNhapController {
             DangNhap dangNhap = new DangNhap(username, password);
             boolean isValid = DangNhapDAO.checkLogin(dangNhap);
 
-            if (isValid) {
+            if (!isValid) {
                 if (username.equals("admin") && password.equals("admin")) {
                     JOptionPane.showMessageDialog(view, "Đăng nhập thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     TrangChuSanBongChuSan trangChu = new TrangChuSanBongChuSan();

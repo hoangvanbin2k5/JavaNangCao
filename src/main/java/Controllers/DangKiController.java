@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import DAO.DangKiDAO;
 import Models.DangKi;
+import Until.MaHoa;
 import View.DangKiView;
 import View.DangNhapView;
 
@@ -22,19 +23,15 @@ public class DangKiController {
             String username = view.getTFUser().getText();
             String gmail = view.getTFGmail().getText();
             String password = new String(view.getPwFPassWord().getPassword());
-            String confirmPassword = new String(view.getPwFConfirmPW().getPassword());
 
-            if (username.isEmpty() || gmail.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            if (username.isEmpty() || gmail.isEmpty() || password.isEmpty()) {
                 JOptionPane.showMessageDialog(view, "Vui lòng điền đầy đủ thông tin.", "Thông báo", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
-            if (!password.equals(confirmPassword)) {
-                JOptionPane.showMessageDialog(view, "Mật khẩu xác nhận không khớp.", "Thông báo", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            DangKi dangKi = new DangKi(username, gmail, password, confirmPassword);
+            String salt = MaHoa.generateSalt();
+            String hashedPassword = MaHoa.maHoaMatKhau(password, salt);
+            DangKi dangKi = new DangKi(username, gmail, salt, salt);
 
             DangKiDAO.insert(dangKi);
             JOptionPane.showMessageDialog(view, "Đăng kí thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);

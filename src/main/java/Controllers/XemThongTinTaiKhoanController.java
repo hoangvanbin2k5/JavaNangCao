@@ -8,8 +8,6 @@ import DAO.ThongTinTaiKhoanDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Models.DangKi;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class XemThongTinTaiKhoanController {

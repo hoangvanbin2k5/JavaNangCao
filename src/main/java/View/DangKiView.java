@@ -18,7 +18,6 @@ public class DangKiView extends JFrame {
     private JTextField tFUser;
     private JTextField tFGmail;
     private JPasswordField pwFPassWord;
-    private JPasswordField pwFConfirmPW;
     private JButton btnDangKy;
     private JButton btnDangNhap;
 
@@ -49,10 +48,6 @@ public class DangKiView extends JFrame {
         lbPassWord.setBounds(70, 172, 77, 16);
         contentPane.add(lbPassWord);
         
-        JLabel lbConfirmPW = new JLabel("Cofirm Password:");
-        lbConfirmPW.setBounds(70, 219, 129, 16);
-        contentPane.add(lbConfirmPW);
-        
         tFUser = new JTextField();
         tFUser.setBounds(227, 78, 205, 32);
         contentPane.add(tFUser);
@@ -67,10 +62,6 @@ public class DangKiView extends JFrame {
         pwFPassWord.setBounds(227, 164, 203, 32);
         contentPane.add(pwFPassWord);
         
-        pwFConfirmPW = new JPasswordField();
-        pwFConfirmPW.setBounds(227, 211, 203, 32);
-        contentPane.add(pwFConfirmPW);
-        
         btnDangNhap = new JButton("Đăng Nhập");
         btnDangNhap.setBounds(96, 285, 117, 39);
         contentPane.add(btnDangNhap);
@@ -80,32 +71,22 @@ public class DangKiView extends JFrame {
         contentPane.add(btnDangKy);
     }
 
-    // Getter cho tFUser
     public JTextField getTFUser() {
         return tFUser;
     }
 
-    // Getter cho tFGmail
     public JTextField getTFGmail() {
         return tFGmail;
     }
-
-    // Getter cho pwFPassWord
+    
     public JPasswordField getPwFPassWord() {
         return pwFPassWord;
     }
 
-    // Getter cho pwFConfirmPW
-    public JPasswordField getPwFConfirmPW() {
-        return pwFConfirmPW;
-    }
-
-    // Getter cho btnDangKy
     public JButton getBtnDangKy() {
         return btnDangKy;
     }
 
-    // Getter cho btnDangNhap
     public JButton getBtnDangNhap() {
         return btnDangNhap;
     }

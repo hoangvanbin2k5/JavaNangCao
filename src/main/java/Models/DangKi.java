@@ -1,25 +1,17 @@
 package Models;
 
 public class DangKi {
-	private String userName, email, passWord, confirmPW;
+	private String userName, email, passWord, salt;
 	
 	public void DangKi() {
 		
 	}
 
-	public DangKi(String userName, String email, String passWord, String confirmPW) {
+	public DangKi(String userName, String email, String passWord, String salt) {
 		this.userName = userName;
 		this.email = email;
 		this.passWord = passWord;
-		this.confirmPW = confirmPW;
-	}
-	
-	
-
-	public DangKi(String userName, String email, String passWord) {
-		this.userName = userName;
-		this.email = email;
-		this.passWord = passWord;
+		this.salt = salt;
 	}
 
 	public String getUserName() {
@@ -46,18 +38,17 @@ public class DangKi {
 		this.passWord = passWord;
 	}
 
-	public String getConfirmPW() {
-		return confirmPW;
+	public String getSalt() {
+		return salt;
 	}
 
-	public void setConfirmPW(String confirmPW) {
-		this.confirmPW = confirmPW;
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 
 	@Override
 	public String toString() {
-		return "DangKi [userName=" + userName + ", email=" + email + ", passWord=" + passWord + ", confirmPW="
-				+ confirmPW + "]";
+		return "DangKi [userName=" + userName + ", email=" + email + ", passWord=" + passWord + ", salt=" + salt + "]";
 	}
 
 }

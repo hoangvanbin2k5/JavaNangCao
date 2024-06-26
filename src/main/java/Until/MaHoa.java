@@ -13,14 +13,13 @@ public class MaHoa {
             md.update(passwordWithSalt.getBytes());
             byte[] byteData = md.digest();
             String hashedPassword = Base64.getEncoder().encodeToString(byteData);
-            
             return hashedPassword;
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             return null;
         }
     }
-    
+
     public static String generateSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
@@ -28,3 +27,5 @@ public class MaHoa {
         return Base64.getEncoder().encodeToString(salt);
     }
 }
+
+
